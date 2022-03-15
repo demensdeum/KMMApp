@@ -1,0 +1,85 @@
+openapi: 3.0.3
+info:
+  title: Newsapi
+  description: newsapi.org
+  version: 1.0.0
+servers:
+- url: https://newsapi.org/v2/
+tags:
+- name: News
+  description: Articles
+paths:
+  /everything:
+    get:
+      tags:
+      - articles
+      summary: Articles List
+      operationId: articlesList
+      parameters:
+      - name: q
+        in: query
+        description: query
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        description: maximal articles
+        required: true
+        schema:
+          type: integer
+      - name: language
+        in: query
+        description: Language in two letters
+        required: true
+        schema:
+          type: string          
+      - name: page
+        in: query
+        description: page
+        required: true
+        schema:
+          type: integer
+      - name: apiKey
+        in: query
+        description: API key
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticlesRoot'
+components:
+  schemas:
+    ArticlesRoot:
+      type: object
+      properties:
+        status:
+          type: string
+        totalResults:
+          type: integer
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
+    Article:
+      type: object
+      properties:
+        author:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        urlToImage:
+          type: string
+        publishedAt:
+          type: string
+        content:
+          type: string
