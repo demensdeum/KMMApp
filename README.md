@@ -1,5 +1,5 @@
 # Kotlin Multiplatform Mobile iOS Example
-Ktor + SwiftUI
+KMM + Ktor + SwiftUI
 
 # iOS Pro Course
 https://otus.ru/lessons/advanced-ios
